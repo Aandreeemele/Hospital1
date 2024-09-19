@@ -9,15 +9,13 @@ public class LoginView extends JFrame {
     private JButton loginButton;
 
     public LoginView() {
-        // Configuración de la ventana
         this.setTitle("Login");
         this.setSize(400, 300);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(null);
-        this.setLocationRelativeTo(null);  // Centrar la ventana
+        this.setLocationRelativeTo(null);
 
-        // Componentes
-        JLabel emailLabel = new JLabel("Correo:");
+        JLabel emailLabel = new JLabel("Usuario:");
         emailLabel.setBounds(50, 50, 100, 30);
         this.add(emailLabel);
 
