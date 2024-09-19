@@ -1,37 +1,39 @@
 package controller;
 
 import model.Doctor;
+import model.DoctorGeneral;
+import view.DoctorView;
 import view.LoginView;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
+import javax.swing.*;
 import java.util.HashMap;
 
 public class LoginController {
-
     private LoginView loginView;
     private Doctor doctorController;
 
     public LoginController(LoginView loginView, Doctor doctorController) {
         this.loginView = loginView;
         this.doctorController = doctorController;
-
-        this.loginView.setLoginActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                handleLogin();
-            }
-        });
+        this.loginView.addLoginListener(e -> iniciarSesion());
     }
 
-    private void handleLogin() {
-        String usuario = loginView.getUsuario();
-        String contrasena = loginView.getContrasena();
-        HashMap<String, String> resultado = doctorController.validarDatos(usuario, contrasena);
-        if ("success".equals(resultado.get("status"))) {
-            System.out.println("Inicio de sesión correcto");
-            System.out.println("Nombre: " + resultado.get("nombre"));
-            System.out.println("Especialidad: " + resultado.get("especialidad"));
+    private void iniciarSesion() {
+        String email = loginView.getEmail();
+        String password = loginView.getPassword();
+        DoctorGeneral loggedInDoctor = doctorController.validateLogin(email, password);
+
+        if (loggedInDoctor != null) {
+            HashMap<String, String> doctorData = new HashMap<>();
+            doctorData.put("nombre", loggedInDoctor.getName());
+            doctorData.put("especialidad", loggedInDoctor.getSpecialty());
+
+            DoctorView doctorView = new DoctorView(doctorData);
+            doctorView.setVisible(true);
+
+            loginView.dispose();
         } else {
-            System.out.println("Usuario o contraseña incorrectos");
+            JOptionPane.showMessageDialog(loginView, "Credenciales incorrectas");
         }
     }
 }

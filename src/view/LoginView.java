@@ -1,60 +1,52 @@
 package view;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class LoginView extends JFrame {
-
-    private JTextField txtCorreo;
-    private JPasswordField txtContrasena;
-    private JButton btnLogin;
+    private JTextField emailField;
+    private JPasswordField passwordField;
+    private JButton loginButton;
 
     public LoginView() {
-        //Configuración del frame
-        setTitle("Login");
-        setSize(600, 500);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
+        // Configuración de la ventana
+        this.setTitle("Login");
+        this.setSize(400, 300);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setLayout(null);
+        this.setLocationRelativeTo(null);  // Centrar la ventana
 
-        JPanel panel = new JPanel();
-        panel.setLayout(null);
-        getContentPane().add(panel);
+        // Componentes
+        JLabel emailLabel = new JLabel("Correo:");
+        emailLabel.setBounds(50, 50, 100, 30);
+        this.add(emailLabel);
 
-        //Correo
-        JLabel lblCorreo = new JLabel("Correo:");
-        lblCorreo.setBounds(150, 150, 80, 25);
-        panel.add(lblCorreo);
+        emailField = new JTextField();
+        emailField.setBounds(150, 50, 200, 30);
+        this.add(emailField);
 
-        txtCorreo = new JTextField();
-        txtCorreo.setBounds(250, 150, 180, 25);
-        panel.add(txtCorreo);
+        JLabel passwordLabel = new JLabel("Contraseña:");
+        passwordLabel.setBounds(50, 100, 100, 30);
+        this.add(passwordLabel);
 
-        //Contrasenna
-        JLabel lblContrasena = new JLabel("Contraseña:");
-        lblContrasena.setBounds(150, 200, 80, 25);
-        panel.add(lblContrasena);
+        passwordField = new JPasswordField();
+        passwordField.setBounds(150, 100, 200, 30);
+        this.add(passwordField);
 
-        txtContrasena = new JPasswordField();
-        txtContrasena.setBounds(250, 200, 180, 25);
-        panel.add(txtContrasena);
-
-        //Iniciar Sesión
-        btnLogin = new JButton("Iniciar sesión");
-        btnLogin.setBounds(250, 250, 180, 30);
-        btnLogin.setBackground(Color.LIGHT_GRAY);
-        panel.add(btnLogin);
+        loginButton = new JButton("Iniciar sesión");
+        loginButton.setBounds(150, 150, 200, 30);
+        this.add(loginButton);
     }
 
-    public String getUsuario() {
-        return txtCorreo.getText();
+    public String getEmail() {
+        return emailField.getText();
     }
 
-    public String getContrasena() {
-        return new String(txtContrasena.getPassword());
+    public String getPassword() {
+        return new String(passwordField.getPassword());
     }
 
-    public void setLoginActionListener(ActionListener listener) {
-        btnLogin.addActionListener(listener);
+    public void addLoginListener(ActionListener listener) {
+        loginButton.addActionListener(listener);
     }
 }

@@ -1,36 +1,35 @@
 package model;
 
 public class DoctorGeneral {
-
-    private String nombre;
+    private String name;
     private String email;
-    private String especialidad;
-    private String telefono;
-    private String usuario;
-    private String contrasena;
+    private String specialty;
+    private String phone;
+    private String username;
+    private String password;
 
-    public DoctorGeneral(String nombre, String email, String especialidad, String telefono, String usuario, String contrasena) {
-        this.nombre = nombre;
+    public DoctorGeneral(String name, String email, String specialty, String phone, String username, String password) {
+        this.name = name;
         this.email = email;
-        this.especialidad = especialidad;
-        this.telefono = telefono;
-        this.usuario = usuario;
-        this.contrasena = contrasena;
+        this.specialty = specialty;
+        this.phone = phone;
+        this.username = username;
+        this.password = password;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getName() {
+        return name;
     }
 
-    public String getEspecialidad() {
-        return especialidad;
+    public String getSpecialty() {
+        return specialty;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public String getUsername() {
+        return username;
     }
 
-    public String getContrasena() {
-        return contrasena;
+    public String getPassword() {
+        return password;
     }
 }
